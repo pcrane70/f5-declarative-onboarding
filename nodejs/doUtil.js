@@ -313,6 +313,7 @@ module.exports = {
                 dns.lookup(address, (error) => {
                     if (error) {
                         error.message = `Unable to resolve host ${address}: ${error.message}`;
+                        error.code = 424;
                         reject(error);
                         return;
                     }
@@ -321,6 +322,7 @@ module.exports = {
             } catch (error) {
                 // if DNS.resolve errors it throws an exception instead of rejecting
                 error.message = `Unable to resolve host ${address}: ${error.message}`;
+                error.code = 424;
                 reject(error);
             }
         });
