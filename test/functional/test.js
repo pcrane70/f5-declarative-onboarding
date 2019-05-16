@@ -52,7 +52,8 @@ describe('Declarative Onboarding Functional Test Suite', function performFunctio
                 return Promise.resolve();
             })
             .then(() => {
-                if (!process.env.BIG_IQ_HOST || !process.env.BIG_IQ_USERNAME || !process.env.BIG_IQ_PASSWORD) {
+                if (!process.env.BIG_IQ_HOST || !process.env.BIG_IQ_USERNAME
+                    || !process.env.BIG_IQ_PASSWORD) {
                     return Promise.reject(new Error('At least one of BIG_IQ_HOST, BIG_IQ_USERNAME,'
                         + 'BIG_IQ_PASSWORD not set'));
                 }
@@ -202,7 +203,10 @@ describe('Declarative Onboarding Functional Test Suite', function performFunctio
                 username: thisMachine.adminUsername,
                 password: thisMachine.adminPassword
             };
-            const bigIqAuth = { username: process.env.BIG_IQ_USERNAME, password: process.env.BIG_IQ_PASSWORD };
+            const bigIqAuth = {
+                username: process.env.BIG_IQ_USERNAME,
+                password: process.env.BIG_IQ_PASSWORD
+            };
             const bigIqAddress = process.env.BIG_IQ_HOST;
             const bodyFileLicensing = `${BODIES}/licensing_big_iq.json`;
             return new Promise((resolve, reject) => {
